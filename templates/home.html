@@ -1,0 +1,117 @@
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 40px;
+        }
+        .login {
+            background-color:white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .form-control, .btn {
+            padding: 12px 20px;
+            width: 100%;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .btn {
+            background-color: #008cba; /* Blue */
+            color: white;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #005f7f; /* Darker blue */
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        h2 {
+            text-align: center;
+            color: #555;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login">
+       <h1>Student Exam Performance Prediction</h1>
+   
+       <form action="{{ url_for('predict_datapoint')}}" method="post">
+        <div class="mb-3">
+            <label class="form-label">Gender</label>
+            <select class="form-control" name="gender" required>
+                <option selected disabled value="">Select your Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Race or Ethnicity</label>
+            <select class="form-control" name="ethnicity" required>
+                <option selected disabled value="">Select Ethnicity</option>
+                <option value="group A">Hispanic</option>
+                <option value="group B">Asian</option>
+                <option value="group C">American</option>
+                <option value="group D">African</option>
+                <option value="group E">European</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Parental Level of Education</label>
+            <select class="form-control" name="parental_level_of_education" required>
+                <option selected disabled value="">Select Parent Education</option>
+                <option value="associate's degree">Associate's Degree</option>
+                <option value="bachelor's degree">Bachelor's Degree</option>
+                <option value="high school">High School</option>
+                <option value="master's degree">Master's Degree</option>
+                <option value="some college">Some College</option>
+                <option value="some high school">Some High School</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Lunch Type</label>
+            <select class="form-control" name="lunch" required>
+                <option selected disabled value="">Select Lunch Type</option>
+                <option value="free/reduced">Free/Reduced</option>
+                <option value="standard">Standard</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Test preparation Course</label>
+            <select class="form-control" name="test_preparation_course" required>
+                <option selected disabled value="">Select Test Course</option>
+                <option value="none">None</option>
+                <option value="completed">Completed</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Physics Score out of 100</label>
+            <input class="form-control" type="number" name="physics_score" placeholder="Enter your Physics score" min='0' max='100' />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Chemistry Score out of 100</label>
+            <input class="form-control" type="number" name="chemistry_score" placeholder="Enter your Chemistry Score" min='0' max='100' />
+        </div>
+        <div class="mb-3">
+           
+            <input class="btn btn-primary" type="submit" value="Predict your Maths Score" required/>
+        </div>
+        <h2>Maths Score prediction is {{results}}</h2>
+    </form>
+    </div>
+</body>
+</html>
